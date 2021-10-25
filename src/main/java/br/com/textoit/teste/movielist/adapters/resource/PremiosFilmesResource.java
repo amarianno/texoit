@@ -28,7 +28,7 @@ public class PremiosFilmesResource {
         final List<DiferencaPremio> minDiferencaPremios = intervaloPremiacaoPort.obterMenoresDiferencasOrdenadasPorAno();
 
 
-        maxDiferencaPremios.forEach( diffPremio -> {
+        maxDiferencaPremios.forEach( diffPremio ->
             diferencasPremiacaoDTO.getMax().add(
                     new DiferencaDTO(
                             diffPremio.getNome(),
@@ -36,10 +36,10 @@ public class PremiosFilmesResource {
                             diffPremio.getMinimo(),
                             diffPremio.getMaximo()
                     )
-            );
-        });
+            )
+        );
 
-        minDiferencaPremios.forEach( diffPremio -> {
+        minDiferencaPremios.forEach( diffPremio ->
             diferencasPremiacaoDTO.getMin().add(
                     new DiferencaDTO(
                             diffPremio.getNome(),
@@ -47,8 +47,8 @@ public class PremiosFilmesResource {
                             diffPremio.getMinimo(),
                             diffPremio.getMaximo()
                     )
-            );
-        });
+            )
+        );
 
         return diferencasPremiacaoDTO;
     }

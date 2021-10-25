@@ -23,24 +23,37 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
     FilmeRepository filmeRepository;
 
 
+    /**
+     * Faz o parser entre do arquivo CSV transformando em uma lista de filmes
+     * Que é inserida na base de dados em seguida
+     *
+     * @throws IOException
+     */
     public void preencherListaFilmesAPartirDoCsv() throws IOException {
 
         try (CSVReader reader = new CSVReader(new FileReader(listaFilmesCsv.getFile()))) {
 
-            List<String[]> r = reader.readAll();
-            r.remove(0);
-            r.forEach(x -> {
-                String[] dadosCsv = dadosCsv(x);
-                filmeRepository.save(obterValor(dadosCsv));
+            List<String[]> todasLinhasCsv = reader.readAll();
+            todasLinhasCsv.remove(0);
+            todasLinhasCsv.forEach(linha -> {
+                String[] dadosCsv = extrairDadosCsv(linha);
+                filmeRepository.save(obterFilmeAPartirDoCsv(dadosCsv));
             });
 
+        } catch (IOException ioe) {
+            throw  ioe;
         } catch (Exception e) {
             e.getMessage();
         }
 
     }
 
-    private String[] dadosCsv(String[] dadosBrutos) {
+    /**
+     * Extrair os dados do CSV para Array
+     * @param dadosBrutos
+     * @return
+     */
+    private String[] extrairDadosCsv(String[] dadosBrutos) {
 
         List<String> dadosCsv = new ArrayList<>();
         dadosCsv.addAll(Arrays.asList(dadosBrutos[0].split(";")));
@@ -57,7 +70,13 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
 
     }
 
-    private Filme obterValor(String[] dadosCsv) {
+    /**
+     * Transforma uma linha do CSV em um Filme
+     *
+     * @param dadosCsv
+     * @return
+     */
+    private Filme obterFilmeAPartirDoCsv(String[] dadosCsv) {
 
         Filme filme = new Filme();
         filme.setAno(Integer.parseInt(dadosCsv[0]));

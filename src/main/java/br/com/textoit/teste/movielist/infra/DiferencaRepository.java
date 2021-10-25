@@ -2,7 +2,6 @@ package br.com.textoit.teste.movielist.infra;
 
 import br.com.textoit.teste.movielist.domain.DiferencaPremio;
 import br.com.textoit.teste.movielist.domain.IntervaloPremiacaoPort;
-import br.com.textoit.teste.movielist.infra.Filme;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
