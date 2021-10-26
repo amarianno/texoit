@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/filme", produces = MediaType.APPLICATION_JSON_VALUE)
-public class PremiosFilmesResource {
+public class PremiosFilmesController {
 
     @Autowired
     IntervaloPremiacaoPort intervaloPremiacaoPort;
