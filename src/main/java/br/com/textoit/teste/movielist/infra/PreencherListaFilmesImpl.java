@@ -1,18 +1,18 @@
 package br.com.textoit.teste.movielist.infra;
 
 import br.com.textoit.teste.movielist.domain.PreencherListaFilmesPort;
-import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import com.opencsv.enums.CSVReaderNullFieldIndicator;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.input.CharSequenceReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +36,9 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
      */
     public void preencherListaFilmesAPartirDoCsv() throws IOException {
 
-        try (CSVReader reader = new CSVReaderBuilder(new FileReader(listaFilmesCsv.getFile()))
+        Reader targetReader = new CharSequenceReader(new String(IOUtils.toByteArray(listaFilmesCsv.getInputStream())));
+
+        try (CSVReader reader = new CSVReaderBuilder(targetReader)
                 .withCSVParser(new CSVParserBuilder()
                         .withSeparator(';')
                         .withEscapeChar('\\')
@@ -48,11 +50,13 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
                 .build()) {
 
             List<String[]> todasLinhasCsv = reader.readAll();
-            todasLinhasCsv.remove(0);
+            todasLinhasCsv.remove(0);//retira o cabeçalho
             todasLinhasCsv.forEach(linha -> {
                 final List<Filme> filmes = obterFilmeAPartirDoCsv(linha);
                 filmes.forEach( filme -> filmeRepository.save(filme));
             });
+
+            targetReader.close();
 
         } catch (IOException ioe) {
             throw  ioe;
@@ -64,6 +68,8 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
 
     /**
      * Transforma uma linha do CSV em um Filme
+     * Se o nome dos produtores vierem com virgula ou 'and'
+     * Separo os nomes e insiro uma linha pra cada um
      *
      * @param dadosCsv
      * @return

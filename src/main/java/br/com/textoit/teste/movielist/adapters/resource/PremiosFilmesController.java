@@ -3,6 +3,7 @@ package br.com.textoit.teste.movielist.adapters.resource;
 import br.com.textoit.teste.movielist.adapters.model.DiferencaDTO;
 import br.com.textoit.teste.movielist.adapters.model.DiferencasPremiacaoDTO;
 import br.com.textoit.teste.movielist.domain.DiferencaPremio;
+import br.com.textoit.teste.movielist.domain.IntervaloFilmesService;
 import br.com.textoit.teste.movielist.domain.IntervaloPremiacaoPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,15 +18,15 @@ import java.util.List;
 public class PremiosFilmesController {
 
     @Autowired
-    IntervaloPremiacaoPort intervaloPremiacaoPort;
+    IntervaloFilmesService intervaloFilmesService;
 
     @GetMapping(value = "/intervalos")
     public DiferencasPremiacaoDTO obterDiferencasEntrePremiacoes() {
 
         DiferencasPremiacaoDTO diferencasPremiacaoDTO = new DiferencasPremiacaoDTO();
 
-        final List<DiferencaPremio> maxDiferencaPremios = intervaloPremiacaoPort.obterMaioresDiferencas();
-        final List<DiferencaPremio> minDiferencaPremios = intervaloPremiacaoPort.obterMenoresDiferencasOrdenadasPorAno();
+        final List<DiferencaPremio> maxDiferencaPremios = intervaloFilmesService.obterMaioresDiferencasEntrePremiacoes();
+        final List<DiferencaPremio> minDiferencaPremios = intervaloFilmesService.obterMenoresDiferencasEntrePremiacoes();
 
 
         maxDiferencaPremios.forEach( diffPremio ->

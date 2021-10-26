@@ -19,17 +19,21 @@
  * Implementado com base no nível 2 de maturidade de Richardson, uma api GET acessada através da URI [http://localhost:8080/filme/intervalos](http://localhost:8080/filme/intervalos)
  * Não usei lombok para fins didáticos mas normalmente uso nos projetos;
 
+# Cobertura dos Testes
+
+![Cobertura dos testes](img/cobertura-testes.png)
+
 # Rodar o projeto
 
-Na pasta do projeto rodar o comando abaixo que vai rodar o teste e gerar um jar
+Na pasta raiz do projeto executar o comando abaixo que vai rodar o teste e gerar um jar na pasta /target
 
 ```
 mvn clean install
 ```
 
-Acessar a pasta target e executar o comando abaixo
+Executar em seguida o comando abaixo
 
 ```
-java -jar movie-list.jar
+java -jar target/movie-list.jar
 ```
 
