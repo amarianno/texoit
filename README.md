@@ -1,4 +1,4 @@
-# texoit - Exercício
+# Texo IT - Exercício
 
 ### Desenvolva uma API RESTful para possibilitar a leitura da lista de indicados e vencedores da categoria Pior Filme do Golden Raspberry Awards.
 
@@ -17,5 +17,19 @@
  * O único teste faz uma chamada na API e traz os dados conforme o que foi passado na especificação;
  * O banco de dados poderá ser acessado [nesse link](http://localhost:8080/h2-console)
  * Implementado com base no nível 2 de maturidade de Richardson, uma api GET acessada através da URI [http://localhost:8080/filme/intervalos](http://localhost:8080/filme/intervalos)
- * Não usei lombok para fins didáticos, normalmente uso nos projetos;
- 
+ * Não usei lombok para fins didáticos mas normalmente uso nos projetos;
+
+# Rodar o projeto
+
+Na pasta do projeto rodar o comando abaixo que vai rodar o teste e gerar um jar
+
+```
+mvn clean install
+```
+
+Acessar a pasta target e executar o comando abaixo
+
+```
+java -jar movie-list.jar
+```
+
