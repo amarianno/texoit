@@ -22,6 +22,7 @@
 # Cobertura dos Testes
 
 ![Cobertura dos testes](img/cobertura-testes.png)
+* Obs: Tanto a % de métodos quanto a de linhas fica um pouco abaixo por conta de getters não usados diretamente mas necessários na hora da API ler o pojo.
 
 # Rodar o projeto
 
