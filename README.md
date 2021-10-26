@@ -3,8 +3,8 @@
 ### Desenvolva uma API RESTful para possibilitar a leitura da lista de indicados e vencedores da categoria Pior Filme do Golden Raspberry Awards.
 
 
-* Fiz o exercício com Java 11, Spring boot com JPA, H2, Rest repositorys, opencsv e RestAssured para o teste
-* Usei conceitos de arquitetura hexagonal separando o domain do da infra e usando ports e adapters.
+* Fiz o exercício com Java 11, Spring boot 2.5.6 com JPA, H2, Rest repositorys, opencsv, commons-io e RestAssured para o teste
+* Usei conceitos de arquitetura hexagonal separando o domain da infra e usando ports e adapters.
 * Toda a parte de infra está no pacote *br.com.textoit.teste.movielist.infra*
 * Toda a parte do domain está no pacote *br.com.textoit.teste.movielist.domain*
 * A api está no pacote *br.com.textoit.teste.movielist.adapters* com seu Controller, DTOs e configurações
