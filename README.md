@@ -14,6 +14,7 @@
 
  * no startup o banco H2 é carregado com os dados do CSV
  * Quando há mais de um producer, estou carregando uma linha na base de dados pra cada um deles;
+ * Não usei alias na consulta por falta dessa feature no H2;
  * O único teste faz uma chamada na API e traz os dados conforme o que foi passado na especificação;
  * O banco de dados poderá ser acessado [nesse link](http://localhost:8080/h2-console)
  * Implementado com base no nível 2 de maturidade de Richardson, uma api GET acessada através da URI [http://localhost:8080/filme/intervalos](http://localhost:8080/filme/intervalos)
