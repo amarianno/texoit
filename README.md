@@ -17,7 +17,7 @@
  * Não usei alias na consulta por falta dessa feature no H2;
  * O único teste faz uma chamada na API e traz os dados conforme o que foi passado na especificação;
  * O banco de dados poderá ser acessado [nesse link](http://localhost:8080/h2-console)
- * Implementado com base no nível 2 de maturidade de Richardson, uma api GET acessada através da URI [http://localhost:8080/filme/intervalos](http://localhost:8080/filme/intervalos)
+ * Implementado com base no nível 2 de maturidade de Richardson, uma api GET acessada através da URI [http://localhost:8080/filmeEntity/intervalos](http://localhost:8080/filmeEntity/intervalos)
  * Não usei lombok para fins didáticos mas normalmente uso nos projetos;
 
 # Cobertura dos Testes

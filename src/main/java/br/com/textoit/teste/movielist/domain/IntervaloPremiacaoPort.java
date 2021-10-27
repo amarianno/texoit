@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface IntervaloPremiacaoPort {
     List<DiferencaPremio> obterMaioresDiferencas();
+    List<Filme> obterTodosVencedores();
     List<DiferencaPremio> obterMenoresDiferencasOrdenadasPorAno();
 }

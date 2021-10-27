@@ -52,8 +52,8 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
             List<String[]> todasLinhasCsv = reader.readAll();
             todasLinhasCsv.remove(0);//retira o cabeçalho
             todasLinhasCsv.forEach(linha -> {
-                final List<Filme> filmes = obterFilmeAPartirDoCsv(linha);
-                filmes.forEach( filme -> filmeRepository.save(filme));
+                final List<FilmeEntity> filmeEntities = obterFilmeAPartirDoCsv(linha);
+                filmeEntities.forEach(filmeEntity -> filmeRepository.save(filmeEntity));
             });
 
             targetReader.close();
@@ -74,9 +74,9 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
      * @param dadosCsv
      * @return
      */
-    private List<Filme> obterFilmeAPartirDoCsv(final String[] dadosCsv) {
+    private List<FilmeEntity> obterFilmeAPartirDoCsv(final String[] dadosCsv) {
 
-        List<Filme> filmes = new ArrayList<>();
+        List<FilmeEntity> filmeEntities = new ArrayList<>();
         List<String> nomesProducers = new ArrayList<>();
 
         String produces = dadosCsv[3];
@@ -99,18 +99,18 @@ public class PreencherListaFilmesImpl implements PreencherListaFilmesPort {
         }
 
         nomesProducers.forEach( nome -> {
-            Filme filme = new Filme();
-            filme.setAno(Integer.parseInt(dadosCsv[0]));
-            filme.setTitulo(dadosCsv[1]);
-            filme.setProducers(nome);
+            FilmeEntity filmeEntity = new FilmeEntity();
+            filmeEntity.setAno(Integer.parseInt(dadosCsv[0]));
+            filmeEntity.setTitulo(dadosCsv[1]);
+            filmeEntity.setProducers(nome);
             if ("yes".equals(dadosCsv[4])) {
-                filme.setVencedor(true);
+                filmeEntity.setVencedor(true);
             }
 
-            filmes.add(filme);
+            filmeEntities.add(filmeEntity);
         });
 
-        return filmes;
+        return filmeEntities;
     }
 
 

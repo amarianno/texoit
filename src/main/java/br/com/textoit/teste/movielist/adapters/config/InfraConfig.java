@@ -2,7 +2,7 @@ package br.com.textoit.teste.movielist.adapters.config;
 
 import br.com.textoit.teste.movielist.domain.IntervaloPremiacaoPort;
 import br.com.textoit.teste.movielist.domain.PreencherListaFilmesPort;
-import br.com.textoit.teste.movielist.infra.DiferencaRepository;
+import br.com.textoit.teste.movielist.infra.IntervaloFilmesRepository;
 import br.com.textoit.teste.movielist.infra.PreencherListaFilmesImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Primary;
 public class InfraConfig {
 
     @Autowired
-    DiferencaRepository diferencaRepository;
+    IntervaloFilmesRepository intervaloFilmesRepository;
 
     @Autowired
     PreencherListaFilmesImpl preencherListaFilmes;
@@ -21,7 +21,7 @@ public class InfraConfig {
     @Primary
     @Bean
     public IntervaloPremiacaoPort intervaloPremiacaoPort() {
-        return diferencaRepository;
+        return intervaloFilmesRepository;
     }
 
     @Primary

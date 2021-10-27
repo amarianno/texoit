@@ -4,14 +4,11 @@ import br.com.textoit.teste.movielist.adapters.model.DiferencaDTO;
 import br.com.textoit.teste.movielist.adapters.model.DiferencasPremiacaoDTO;
 import br.com.textoit.teste.movielist.domain.DiferencaPremio;
 import br.com.textoit.teste.movielist.domain.IntervaloFilmesService;
-import br.com.textoit.teste.movielist.domain.IntervaloPremiacaoPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/filme", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -25,30 +22,26 @@ public class PremiosFilmesController {
 
         DiferencasPremiacaoDTO diferencasPremiacaoDTO = new DiferencasPremiacaoDTO();
 
-        final List<DiferencaPremio> maxDiferencaPremios = intervaloFilmesService.obterMaioresDiferencasEntrePremiacoes();
-        final List<DiferencaPremio> minDiferencaPremios = intervaloFilmesService.obterMenoresDiferencasEntrePremiacoes();
+        final DiferencaPremio maxDiferencaPremios = intervaloFilmesService.obterMaioresDiferencasEntrePremiacoes();
+        final DiferencaPremio minDiferencaPremios = intervaloFilmesService.obterMenoresDiferencasEntrePremiacoes();
 
 
-        maxDiferencaPremios.forEach( diffPremio ->
-            diferencasPremiacaoDTO.getMax().add(
-                    new DiferencaDTO(
-                            diffPremio.getNome(),
-                            diffPremio.getDiferenca(),
-                            diffPremio.getMinimo(),
-                            diffPremio.getMaximo()
-                    )
-            )
+        diferencasPremiacaoDTO.getMax().add(
+                new DiferencaDTO(
+                        maxDiferencaPremios.getNome(),
+                        maxDiferencaPremios.getDiferenca(),
+                        maxDiferencaPremios.getMinimo(),
+                        maxDiferencaPremios.getMaximo()
+                )
         );
 
-        minDiferencaPremios.forEach( diffPremio ->
-            diferencasPremiacaoDTO.getMin().add(
-                    new DiferencaDTO(
-                            diffPremio.getNome(),
-                            diffPremio.getDiferenca(),
-                            diffPremio.getMinimo(),
-                            diffPremio.getMaximo()
-                    )
-            )
+        diferencasPremiacaoDTO.getMin().add(
+                new DiferencaDTO(
+                        minDiferencaPremios.getNome(),
+                        minDiferencaPremios.getDiferenca(),
+                        minDiferencaPremios.getMinimo(),
+                        minDiferencaPremios.getMaximo()
+                )
         );
 
         return diferencasPremiacaoDTO;

@@ -1,26 +1,12 @@
-package br.com.textoit.teste.movielist.infra;
-
-import javax.persistence.*;
+package br.com.textoit.teste.movielist.domain;
 
 
-@Entity
-@Table(name = "filme")
 public class Filme {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Column(name = "ano")
     private Integer ano;
-
-    @Column(name = "titulo")
     private String titulo;
-
-    @Column(name = "producers")
     private String producers;
-
-    @Column(name = "vencedor")
     private boolean vencedor;
 
     public Filme() {

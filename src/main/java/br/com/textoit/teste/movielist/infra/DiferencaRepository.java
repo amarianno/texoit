@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DiferencaRepository extends CrudRepository<Filme, Long>, IntervaloPremiacaoPort {
+public interface DiferencaRepository extends CrudRepository<FilmeEntity, Long> {
 
     @Query(
             nativeQuery = true,
