@@ -22,7 +22,7 @@ public interface DiferencaRepository extends CrudRepository<Filme, Long>, Interv
                     "WHERE ((select max(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) - (select min(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) )  > 0\n" +
                     "GROUP BY producers\n" +
                     "ORDER BY ((select max(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) - (select min(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) ) DESC, (select max(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) DESC\n" +
-                    "LIMIT 2"
+                    "LIMIT 1"
     )
     List<DiferencaPremio> obterMaioresDiferencas();
 
@@ -37,7 +37,7 @@ public interface DiferencaRepository extends CrudRepository<Filme, Long>, Interv
                     "WHERE ((select max(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) - (select min(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) )  > 0\n" +
                     "GROUP BY producers\n" +
                     "ORDER BY ((select max(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) - (select min(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) ) ASC, (select max(ano) as ano from filme where producers like '%' || ff.producers || '%'  AND vencedor = true) DESC\n" +
-                    "LIMIT 2"
+                    "LIMIT 1"
     )
     List<DiferencaPremio> obterMenoresDiferencasOrdenadasPorAno();
 }

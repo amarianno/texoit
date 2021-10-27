@@ -37,18 +37,12 @@ class MovieListApplicationTests {
 				.body("min[0].interval", equalTo(1))
 				.body("min[0].previousWin", equalTo(1990))
 				.body("min[0].followingWin", equalTo(1991))
-				.body("min[1].producer", equalTo("Bo Derek"))
-				.body("min[1].interval", equalTo(6))
-				.body("min[1].previousWin", equalTo(1984))
-				.body("min[1].followingWin", equalTo(1990))
+
 				.body("max[0].producer", equalTo("Matthew Vaughn"))
 				.body("max[0].interval", equalTo(13))
 				.body("max[0].previousWin", equalTo(2002))
 				.body("max[0].followingWin", equalTo(2015))
-				.body("max[1].producer", equalTo("Buzz Feitshans"))
-				.body("max[1].interval", equalTo(9))
-				.body("max[1].previousWin", equalTo(1985))
-				.body("max[1].followingWin", equalTo(1994))
+
 		;
 
 	}

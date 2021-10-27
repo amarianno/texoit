@@ -12,7 +12,7 @@ public class IntervaloFilmesService {
     IntervaloPremiacaoPort intervaloPremiacaoPort;
 
     /**
-     * Retorna os 2 MENORES intervalos entre as premiações
+     * Retorna o MENOR intervalo entre as premiações
      * @return
      */
     public List<DiferencaPremio> obterMenoresDiferencasEntrePremiacoes() {
@@ -20,7 +20,7 @@ public class IntervaloFilmesService {
     }
 
     /**
-     * Retorna os 2 MAIORES intervalos entre as premiações
+     * Retorna o MAIOR intervalo entre as premiações
      * @return
      */
     public List<DiferencaPremio> obterMaioresDiferencasEntrePremiacoes() {
